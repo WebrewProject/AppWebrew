@@ -14,8 +14,7 @@ services:
       - ./nginx/logs:/var/log/nginx
       - ../:/var/www/${APP_NAME}
     depends_on:
-      db_server:
-        condition: service_healthy
+      - db_server
     networks:
       - project_net
 
@@ -43,7 +42,6 @@ services:
       MYSQL_DATABASE: '${MYSQL_DB}'
     volumes:
       - db_data:/var/lib/mysql
-      - ./db/mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
     networks:
       - project_net
 
@@ -55,8 +53,7 @@ services:
     environment:
       PMA_HOST: db_server
     depends_on:
-      db_server:
-        condition: service_healthy
+      - db_server
     volumes:
       - db_admin_data:/var/www/html
     networks:
