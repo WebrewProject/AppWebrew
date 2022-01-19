@@ -19,3 +19,4 @@
 ###< phpunit/phpunit ###
 
 .docker/nginx/logs
+/node_modules/

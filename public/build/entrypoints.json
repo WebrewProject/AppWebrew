@@ -1,0 +1,24 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.6b3c594a.js",
+        "/build/24.71db4560.js",
+        "/build/app.ae377137.js"
+      ],
+      "css": [
+        "/build/24.069aa3e8.css",
+        "/build/app.6562aabd.css"
+      ]
+    },
+    "herobanner": {
+      "js": [
+        "/build/runtime.6b3c594a.js",
+        "/build/herobanner.4c4c7867.js"
+      ],
+      "css": [
+        "/build/herobanner.83341845.css"
+      ]
+    }
+  }
+}
