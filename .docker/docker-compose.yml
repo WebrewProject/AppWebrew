@@ -30,7 +30,7 @@ services:
       - project_net
 
   db_server:
-    image: mariadb:10.5.9
+    image: mariadb:10.5.12
     container_name: '${APP_NAME}-database'
     restart: always
     ports:
