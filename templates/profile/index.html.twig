@@ -8,15 +8,27 @@
         <div class="col-md-4 mt-3">
             <h2>Mes informations</h2>
             <hr>
+            <small>{{ app.user.accounType}}</small>
+            <p>{{ app.user.email }}</p>
+            <p>{{ app.user.firstname }} {{ app.user.lastname }}</p>
+            <p>{{ app.user.birthday|date("d/m/Y") }}</p>
+        
         </div>
-         <div class="col-md-4 mt-3">
-            <h2>Mes dernières recherche </h2>
-            <hr>
-        </div>
-         <div class="col-md-4 mt-3">
-            <h2>Mes favoris </h2>
-            <hr>
-        </div>
+        {% if app.user.accounType == "ENTREPRISE" %}
+             <div class="col-md-4 mt-3">
+                <h2>Mes dernières postes </h2>
+                <hr>
+            </div>
+        {% elseif app.user.accounType == "PARTICULIER" %}
+             <div class="col-md-4 mt-3">
+                <h2>Mes dernières recherche </h2>
+                <hr>
+            </div>
+            <div class="col-md-4 mt-3">
+                <h2>Mes favoris </h2>
+                <hr>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

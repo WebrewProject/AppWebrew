@@ -42,6 +42,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $birthday;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $accounType;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +164,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(\DateTimeInterface $birthday): self
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getAccounType(): ?string
+    {
+        return $this->accounType;
+    }
+
+    public function setAccounType(string $accounType): self
+    {
+        $this->accounType = $accounType;
 
         return $this;
     }
