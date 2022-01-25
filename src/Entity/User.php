@@ -67,6 +67,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $accounType;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $siret;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $company_name;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -224,6 +234,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAccounType(string $accounType): self
     {
         $this->accounType = $accounType;
+
+        return $this;
+    }
+
+    public function getSiret(): ?string
+    {
+        return $this->siret;
+    }
+
+    public function setSiret(?string $siret): self
+    {
+        $this->siret = $siret;
+
+        return $this;
+    }
+
+    public function getCompanyName(): ?string
+    {
+        return $this->company_name;
+    }
+
+    public function setCompanyName(?string $company_name): self
+    {
+        $this->company_name = $company_name;
 
         return $this;
     }

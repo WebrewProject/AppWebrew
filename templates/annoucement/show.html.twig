@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annoucement{% endblock %}
+
+{% block body %}
+    <h1>Annoucement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ annoucement.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ annoucement.title }}</td>
+            </tr>
+            <tr>
+                <th>Company_name</th>
+                <td>{{ annoucement.companyName }}</td>
+            </tr>
+            <tr>
+                <th>Sector</th>
+                <td>{{ annoucement.sector }}</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>{{ annoucement.salary }}</td>
+            </tr>
+            <tr>
+                <th>Contract_type</th>
+                <td>{{ annoucement.contractType }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ annoucement.description }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ annoucement.createdAt ? annoucement.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ annoucement.updatedAt ? annoucement.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('annoucement_index') }}">back to list</a>
+
+    <a href="{{ path('annoucement_edit', {'id': annoucement.id}) }}">edit</a>
+
+    {{ include('annoucement/_delete_form.html.twig') }}
+{% endblock %}

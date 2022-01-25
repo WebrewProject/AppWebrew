@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annoucement index{% endblock %}
+
+{% block body %}
+    <h1>Annoucement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Company_name</th>
+                <th>Sector</th>
+                <th>Salary</th>
+                <th>Contract_type</th>
+                <th>Description</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for annoucement in annoucements %}
+            <tr>
+                <td>{{ annoucement.id }}</td>
+                <td>{{ annoucement.title }}</td>
+                <td>{{ annoucement.companyName }}</td>
+                <td>{{ annoucement.sector }}</td>
+                <td>{{ annoucement.salary }}</td>
+                <td>{{ annoucement.contractType }}</td>
+                <td>{{ annoucement.description }}</td>
+                <td>{{ annoucement.createdAt ? annoucement.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ annoucement.updatedAt ? annoucement.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('annoucement_show', {'id': annoucement.id}) }}">show</a>
+                    <a href="{{ path('annoucement_edit', {'id': annoucement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('annoucement_new') }}">Create new</a>
+{% endblock %}

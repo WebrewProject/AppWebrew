@@ -10,7 +10,9 @@
       </ul>
       <div class="navbar-nav ml-auto">
      {% if app.user %}
-     <a class="nav-link" href="#"> Publier une annonce</a>
+      {%  if app.user.accounType == "ENTREPRISE"%}
+        <a class="nav-link" href="{{ path('annoucement_new') }}"> Publier une annonce</a>
+       {% endif %} 
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{ app.user.firstname }} {{ app.user.lastname }}
