@@ -8,10 +8,34 @@
         <div class="col-md-4 mt-3">
             <h2>Mes informations</h2>
             <hr>
-            <small>{{ app.user.accounType}}</small>
             <p>{{ app.user.email }}</p>
             <p>{{ app.user.firstname }} {{ app.user.lastname }}</p>
             <p>{{ app.user.birthday|date("d/m/Y") }}</p>
+
+            <h4>Informations de la société</h4>
+            <hr>
+            {% if (app.user.siret is empty) %}
+                <div class="alert alert-warning" role="alert">
+                    Vous n'avez pas renseigné votre numéro de SIRET, nous ne pouvons pas identifier votre société.
+                 
+
+                    <a href="{{ path('add_siret') }}">
+                           <button class="btn btn-warning text-light mt-2">
+                                Modifier mes informations 
+                           </button>
+                    </a>
+                </div>
+            {% endif %}
+
+            <p>Type de compte : <small>{{ app.user.accounType}}</small></p> 
+             {% if app.user.companyName is not empty %} 
+                <p>Nom de la socité : {{ app.user.companyName }}</p>
+            {% endif %}  
+            {% if app.user.siret is not empty %} 
+                <p>Numéro de SIRET : {{ app.user.siret }}</p>
+            {% endif %}
+
+
         
         </div>
         {% if app.user.accounType == "ENTREPRISE" %}
