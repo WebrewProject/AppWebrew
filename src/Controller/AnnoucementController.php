@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Annoucement;
 use App\Form\AnnoucementType;
 use App\Repository\AnnoucementRepository;
+use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,8 +30,12 @@ class AnnoucementController extends AbstractController
         $annoucement = new Annoucement();
         $form = $this->createForm(AnnoucementType::class, $annoucement);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
+            $annoucement->setCompanyName($this->getUser()->getCompanyName());
+            $annoucement->setCreatedAt(new DateTimeImmutable());
+            $annoucement->setUpdatedAt(new DateTimeImmutable());
+            dd($annoucement);
             $entityManager->persist($annoucement);
             $entityManager->flush();
 
@@ -57,7 +63,12 @@ class AnnoucementController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $annoucement->setCompanyName($this->getUser()->getCompanyName());
+            $annoucement->setCreatedAt(new DateTimeImmutable());
+            $annoucement->setUpdatedAt(new DateTimeImmutable());
+            dd($annoucement);
+            //$entityManager->persist($annoucement);
+            //$entityManager->flush();
 
             return $this->redirectToRoute('annoucement_index', [], Response::HTTP_SEE_OTHER);
         }
